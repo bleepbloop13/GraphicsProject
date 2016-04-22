@@ -21,6 +21,7 @@ public class DrawingFrame extends JFrame
 		this.setContentPane(basePanel);
 		this.setResizable(false);
 		this.setSize(1200,900);
+		this.setTitle("Rectangles lol");
 		this.setVisible(true);
 	}
 }
