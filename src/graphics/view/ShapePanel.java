@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class ShapePanel extends JPanel
 {
 	private ArrayList<Rectangle> rectList;
+	private ArrayList<Rectangle> squareList;
 	private ArrayList<Ellipse2D> ellipseList;
 	private ArrayList<Ellipse2D> circleList;
 	private ArrayList<Polygon> triangleList;
@@ -26,12 +27,35 @@ public class ShapePanel extends JPanel
 	
 	public void addRectangle()
 	{
+		int xPosition = (int)(Math.random() * 600);
+		int yPosition = (int)(Math.random() * 400);
+		int width = (int)(Math.random() * 250);
+		int height = (int)(Math.random() * 600);
 		
+		Rectangle currentRectangle = new Rectangle(xPosition, yPosition, width, height);
+		rectList.add(currentRectangle);
 	}
 	
 	public void addSquare()
 	{
+		int xPosition = (int)(Math.random() * 600);
+		int yPosition = (int)(Math.random() * 400);
+		int width = (int)(Math.random() * 100);
+		int height = width;
 		
+		Rectangle currentSquare = new Rectangle(xPosition, yPosition, width, height);
+		squareList.add(currentSquare);
+	}
+	
+	public void addCircle()
+	{
+		int xPosition = (int)(Math.random() * 600);
+		int yPosition = (int)(Math.random() * 400);
+		int width = (int)(Math.random() * 100);
+		int height = width;
+		
+		Ellipse2D currentCircle = new Ellipse2D.Double(xPosition, yPosition, width, height);
+		circleList.add(currentCircle);
 	}
 	
 	public void addEllipse()
@@ -127,6 +151,30 @@ public class ShapePanel extends JPanel
 			mainGraphics.setStroke(new BasicStroke(penSize));
 			
 			mainGraphics.draw(currentCircle);
+		}
+		
+		for(Rectangle currentSquare : squareList)
+		{
+			int red = (int)(Math.random() * 256);
+			int green = (int)(Math.random() * 256);
+			int blue = (int)(Math.random() * 256);
+			
+			mainGraphics.setColor(new Color(red, green, blue));
+			
+			mainGraphics.fill(currentSquare);
+		}
+		
+		for(Rectangle currentRectangle: rectList)
+		{
+			int red = (int)(Math.random() * 256);
+			int green = (int)(Math.random() * 256);
+			int blue = (int)(Math.random() * 256);
+			
+			int penSize = (int)(Math.random() * 10) + 3;
+			mainGraphics.setColor(new Color(red, green, blue));
+			mainGraphics.setStroke(new BasicStroke(penSize));
+			
+			mainGraphics.draw(currentRectangle);
 		}
 	}
 	

@@ -15,6 +15,7 @@ public class DrawingPanel extends JPanel
 	private GraphPanel graphPanel;
 	private SpringLayout baseLayout;
 	private JButton rectButton;
+	private JButton squareButton;
 	private JButton triangleButton;
 	private JButton polyButton;
 	private JButton ellipseButton;
@@ -70,7 +71,6 @@ public class DrawingPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.SOUTH, shapePanel, -166, SpringLayout.NORTH, rectButton);
 		baseLayout.putConstraint(SpringLayout.EAST, shapePanel, -23, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, shapePanel, 358, SpringLayout.WEST, this);
-
 	}
 
 	private void setupListeners()
@@ -79,14 +79,8 @@ public class DrawingPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				int xPosition = (int)(Math.random() * getWidth());
-				int yPosition = (int)(Math.random() * getHeight());
-				int width = (int)(Math.random() * 100);
-				int height = (int)(Math.random() * 100);
-				
-				rectangleList.add(new Rectangle(xPosition, yPosition, width, height));
-				
-				repaint();
+				shapePanel.addRectangle();
+				shapePanel.repaint();
 			}
 		});
 		graphButton.addActionListener(new ActionListener()
@@ -101,6 +95,30 @@ public class DrawingPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				shapePanel.addTriangle();
+				shapePanel.repaint();
+			}
+		});
+		squareButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				shapePanel.addSquare();
+				shapePanel.repaint();
+			}
+		});
+		circleButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				shapePanel.addCircle();
+				shapePanel.repaint();
+			}
+		});
+		ellipseButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				shapePanel.addEllipse();
 				shapePanel.repaint();
 			}
 		});
@@ -141,8 +159,6 @@ public class DrawingPanel extends JPanel
 		
 		mainGraphics.setStroke(new BasicStroke(20));
 		mainGraphics.setColor(Color.CYAN);
-		
-		mainGraphics.drawRect(50, 90, 300, 500);
 
 		for(Rectangle current : rectangleList)
 		{
