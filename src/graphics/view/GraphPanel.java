@@ -10,7 +10,7 @@ public class GraphPanel extends JPanel
 	public GraphPanel()
 	{
 		//initialize graphSource here
-		graphSource = new int[] {2,4,213,10,20,12,75};
+		graphSource = new int[] {2,4,213,10,20,12,75,43,21,95};
 		setupPanel();
 	}
 	
