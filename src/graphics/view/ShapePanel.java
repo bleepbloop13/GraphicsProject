@@ -18,6 +18,7 @@ public class ShapePanel extends JPanel
 	public ShapePanel()
 	{
 		rectList = new ArrayList<Rectangle>();
+		squareList = new ArrayList<Rectangle>();
 		ellipseList = new ArrayList<Ellipse2D>();
 		circleList = new ArrayList<Ellipse2D>();
 		triangleList = new ArrayList<Polygon>();
